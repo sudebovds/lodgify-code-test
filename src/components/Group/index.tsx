@@ -1,6 +1,6 @@
 import React, { FC } from 'react'
 import { IGroupInterface } from '../../types'
-import TaskItem from './taskItem'
+import TaskItem from './TaskItem'
 
 //Styles
 import './style.css';
