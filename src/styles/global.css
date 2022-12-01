@@ -1,0 +1,25 @@
+/*Fonts and imports*/
+@import url("https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@400;700&display=swap");
+
+/*Variables*/
+:root {
+  --grayBgr: #e5e5e5;
+  --greenProgress: #00b797;
+  --mainText: #333333;
+}
+
+/*Common styles*/
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-size: 15px;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
