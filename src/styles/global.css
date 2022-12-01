@@ -3,8 +3,11 @@
 
 /*Variables*/
 :root {
-  --grayBgr: #e5e5e5;
+  --grayBGR: #eee;
+  --grayBorder: #e5e5e5;
+  --lightGray: #999999;
   --greenProgress: #00b797;
+  --lightGreenProgress: #f2fbfa;
   --mainText: #333333;
 }
 
@@ -14,12 +17,35 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: "Source Sans Pro", sans-serif;
   font-size: 15px;
+  background-color: var(--grayBGR);
 }
-
 ul,
 li {
   list-style: none;
   padding: 0;
   margin: 0;
+}
+.wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100vw;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+.widget {
+  width: 820px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  background: white;
+  padding: 24px 18px 18px 18px;
+  border: 1px solid var(--grayBorder);
+  border-radius: 11px;
+}
+.mainContent {
+  width: 100%;
 }
