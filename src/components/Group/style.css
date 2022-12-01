@@ -1,0 +1,157 @@
+.groupContainer {
+  border-left: 1px solid var(--grayBorder);
+  border-right: 1px solid var(--grayBorder);
+}
+
+.groupContainer:first-child {
+  border-radius: 10px 10px 0 0;
+  border: 1px solid var(--grayBorder);
+}
+
+.groupContainer:last-child {
+  border-radius: 0 0 10px 10px;
+  border: 1px solid var(--grayBorder);
+}
+
+.groupHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px;
+}
+
+.groupName {
+  padding-left: 24px;
+  position: relative;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+}
+.groupName::before {
+  content: "";
+  display: flex;
+  position: absolute;
+  left: 0;
+  width: 17px;
+  height: 17px;
+  background-image: url("../../assets/icons/booking.svg");
+  background-repeat: no-repeat;
+}
+
+.groupName.done::before {
+  background-image: url("../../assets/icons/done-booking.svg");
+}
+
+.showMore,
+.showLess {
+  cursor: pointer;
+  align-items: center;
+  position: relative;
+  padding-right: 25px;
+  line-height: 20.11px;
+  font-size: 16px;
+  color: var(--lightGray);
+}
+
+.groupContainer[open] .showMore {
+  display: none;
+}
+
+.groupContainer[open] .showLess {
+  display: flex;
+}
+.groupContainer .showMore {
+  display: flex;
+}
+
+.groupContainer .showLess {
+  display: none;
+}
+
+.showMore::after,
+.showLess::after {
+  content: "";
+  display: flex;
+  position: absolute;
+  right: 0;
+  width: 16px;
+  height: 8px;
+  background-repeat: no-repeat;
+}
+
+.showMore::after {
+  background-image: url("../../assets/icons/arrow-down.svg");
+}
+
+.showLess::after {
+  background-image: url("../../assets/icons/arrow-up.svg");
+}
+
+.groupContent {
+  padding: 0 20px;
+  display: flex;
+  flex-direction: column;
+}
+.groupRow {
+  display: flex;
+  position: relative;
+  padding-left: 30px;
+  cursor: pointer;
+  font-size: 16px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  align-items: center;
+  margin: 20px 0;
+}
+.groupRow input {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 0;
+  width: 0;
+}
+
+.groupRow .checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 20px;
+  width: 20px;
+  border-radius: 4px;
+  background-color: white;
+  border: 1px solid var(--grayBorder);
+}
+
+.groupRow:hover input ~ .checkmark {
+  background-color: var(--grayBorder);
+}
+
+.groupRow input:checked ~ .checkmark {
+  background-color: var(--greenProgress);
+}
+
+.groupRow .checkmark:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.groupRow input:checked ~ .checkmark:after {
+  display: block;
+}
+
+.groupRow .checkmark:after {
+  left: 6px;
+  top: 2px;
+  width: 5px;
+  height: 10px;
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+  -ms-transform: rotate(45deg);
+  transform: rotate(45deg);
+}
