@@ -17,6 +17,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  overflow-x: hidden;
   font-family: "Source Sans Pro", sans-serif;
   font-size: 15px;
   background-color: var(--grayBGR);
@@ -31,8 +32,8 @@ li {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100vw;
-  height: 100vh;
+  min-width: 100vw;
+  min-height: 100vh;
   margin: 0;
   padding: 0;
 }
@@ -48,4 +49,11 @@ li {
 }
 .mainContent {
   width: 100%;
+}
+
+.error {
+  padding: 25px;
+  background: white;
+  border: 1px solid var(--grayBorder);
+  border-radius: 5px;
 }

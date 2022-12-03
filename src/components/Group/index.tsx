@@ -5,19 +5,22 @@ import TaskItem from './TaskItem'
 //Styles
 import './style.css';
 
-const Group: FC<IGroupInterface> = ({ groupName, tasks }) => {
+const Group: FC<IGroupInterface> = ({ name, tasks, calculateProgress }) => {
   return (
     <details className='groupContainer'>
         <summary className='groupHeader'>
-            <div className='groupName'>{groupName}</div>
+            <div className='groupName'>{name}</div>
             <div className='showMore'>Show</div>
             <div className='showLess'>Hide</div>
         </summary>
         <div className='groupContent'>
             {tasks.map(task => (
                 <TaskItem 
-                    name={task.name}
-                    key={task.name}
+                    key={task.value}
+                    description={task.description ?? '<Forgot to name this task>'}
+                    value={task.value}
+                    checked={task.checked}
+                    calculateProgress={calculateProgress}
                 />
             ))}             
         </div>
