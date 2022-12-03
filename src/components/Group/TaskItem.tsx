@@ -1,11 +1,30 @@
-import React, { FC } from 'react'
-import { ITask } from '../../types'
+import { ChangeEvent, FC, useState } from 'react'
+import { ITaskInterface } from '../../types'
 
-const TaskItem: FC<ITask> = ({ name }) => {
+const TaskItem: FC<ITaskInterface> = ({ checked, description, value, calculateProgress }) => {
+
+  const [checkedItem, setChecked] = useState<boolean>(checked);
+
+  const checkHandler = (e: ChangeEvent<HTMLInputElement>) => {
+    if(checkedItem){
+      calculateProgress(prev => Math.round(prev - parseFloat(e.target.value)));
+      setChecked(e.target.checked)
+    } else {
+      calculateProgress(prev => Math.round(prev + parseFloat(e.target.value)));
+      setChecked(e.target.checked)
+    }
+    
+  }
+
   return (
     <label className='groupRow'>
-        {name}
-        <input type='checkbox' /> 
+        {description}
+        <input 
+          type='checkbox' 
+          checked={checkedItem} 
+          value={value} 
+          onChange={e => checkHandler(e)}
+        /> 
         <span className="checkmark"></span>
     </label>
   )

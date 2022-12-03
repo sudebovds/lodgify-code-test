@@ -1,6 +1,7 @@
 .groupContainer {
   border-left: 1px solid var(--grayBorder);
   border-right: 1px solid var(--grayBorder);
+  border-bottom: 1px solid var(--grayBorder);
 }
 
 .groupContainer:first-child {
@@ -11,6 +12,7 @@
 .groupContainer:last-child {
   border-radius: 0 0 10px 10px;
   border: 1px solid var(--grayBorder);
+  border-top: none;
 }
 
 .groupHeader {
@@ -87,6 +89,14 @@
 
 .showLess::after {
   background-image: url("../../assets/icons/arrow-up.svg");
+}
+
+.groupContainer .groupHeader {
+  color: var(--greenProgress);
+}
+
+.groupContainer:has(input[type="checkbox"]:not(:checked)) .groupHeader {
+  color: var(--mainText);
 }
 
 .groupContent {

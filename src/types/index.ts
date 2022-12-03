@@ -1,8 +1,12 @@
 export interface ITaskInterface{
-    name: string;
+    description: string;
+    checked: boolean;
+    value: number;
+    calculateProgress: React.Dispatch<React.SetStateAction<number>>
 }
 
 export interface IGroupInterface{
-    groupName: string;
+    name: string;
     tasks: ITaskInterface[];
+    calculateProgress: React.Dispatch<React.SetStateAction<number>> 
 }

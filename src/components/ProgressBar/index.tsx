@@ -3,7 +3,9 @@ import styled, { keyframes } from 'styled-components'
 //Styles
 import './style.css'
 
-const ProgressBar = ({ progressValue = 68}: {progressValue: number}) => {
+type TProgressValueType = {progressValue: number};
+
+const ProgressBar = ({ progressValue = 0}: TProgressValueType) => {
   const loading = keyframes`
     from {
       width: 0%;
@@ -11,10 +13,10 @@ const ProgressBar = ({ progressValue = 68}: {progressValue: number}) => {
     to {
       width: ${progressValue}%;
     }
-  `;
+  `;  
 
   const ProgressBarValue = styled.div`
-    animation: ${loading} 3s normal forwards;
+    animation: ${loading} 1.5s normal forwards;
     display: flex;
     justify-content: end;
     align-items: center;
@@ -30,7 +32,7 @@ const ProgressBar = ({ progressValue = 68}: {progressValue: number}) => {
   return (
     <>
       <div className='progress'>
-          <ProgressBarValue>{`${progressValue}%`}</ProgressBarValue>
+          <ProgressBarValue>{`${progressValue <= 100 ? progressValue : 100}%`}</ProgressBarValue>
       </div> 
     </>
   )
