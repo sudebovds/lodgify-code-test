@@ -8,12 +8,11 @@ const TaskItem: FC<ITaskInterface> = ({ checked, description, value, calculatePr
   const checkHandler = (e: ChangeEvent<HTMLInputElement>) => {
     if(checkedItem){
       calculateProgress(prev => Math.round(prev - parseFloat(e.target.value)));
-      setChecked(e.target.checked)
+      setChecked(e.target.checked); 
     } else {
       calculateProgress(prev => Math.round(prev + parseFloat(e.target.value)));
-      setChecked(e.target.checked)
-    }
-    
+      setChecked(e.target.checked) 
+    }  
   }
 
   return (

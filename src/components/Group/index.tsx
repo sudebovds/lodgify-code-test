@@ -5,9 +5,9 @@ import TaskItem from './TaskItem'
 //Styles
 import './style.css';
 
-const Group: FC<IGroupInterface> = ({ name, tasks, calculateProgress }) => {
+const Group: FC<IGroupInterface> = ({ name, tasks, calculateProgress, index }) => {
   return (
-    <details className='groupContainer'>
+    <details className='groupContainer' open={index === 0 ? true : false}>
         <summary className='groupHeader'>
             <div className='groupName'>{name}</div>
             <div className='showMore'>Show</div>

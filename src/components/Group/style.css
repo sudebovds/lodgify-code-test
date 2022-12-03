@@ -38,12 +38,8 @@
   left: 0;
   width: 17px;
   height: 17px;
-  background-image: url("../../assets/icons/booking.svg");
-  background-repeat: no-repeat;
-}
-
-.groupName.done::before {
   background-image: url("../../assets/icons/done-booking.svg");
+  background-repeat: no-repeat;
 }
 
 .showMore,
@@ -97,6 +93,10 @@
 
 .groupContainer:has(input[type="checkbox"]:not(:checked)) .groupHeader {
   color: var(--mainText);
+}
+
+.groupContainer:has(input[type="checkbox"]:not(:checked)) .groupName::before {
+  background-image: url("../../assets/icons/booking.svg");
 }
 
 .groupContent {

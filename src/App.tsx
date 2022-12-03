@@ -7,42 +7,50 @@ import { normolizeTasksValue } from './helpers'
 
 function App() {
   const [mainData, setMainData] = useState<IGroupInterface[] | []>([]);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(false);
   const [progress, setProgress] = useState(0);
 
   useEffect(() => {
+    setLoading(true);
     const newGorupData = GetData();
 
     newGorupData
-    .then(data => {
-      if(data.length > 0){
-        let sum = 0;
+        .then(data => {
+          if(data.length > 0){
+            let sum = 0;
 
-        data.forEach((group: IGroupInterface) => {
-          let localInitial = 0;
+            data.forEach((group: IGroupInterface) => {
+              let localInitial = 0;
 
-          let localSum = group.tasks.reduce((acc: number, current: ITaskInterface) => acc + current.value, localInitial);
+              let localSum = group.tasks.reduce((acc: number, current: ITaskInterface) => acc + current.value, localInitial);
 
-          return sum += localSum
+              return sum += localSum
+            });
+
+            const normalisedData = data.map((group: IGroupInterface) => {
+              const normolisedValues = group.tasks.map(task => {
+                return {
+                  ...task,
+                  value: normolizeTasksValue(task.value, sum)
+                }
+                
+              });
+              return {
+                ...group,
+                tasks: normolisedValues
+              }
+          });
+
+          setMainData(normalisedData);
+          setLoading(false);
+          }
+        })
+        .catch(e => {
+          console.error(e);
+          setError(true)
         });
 
-        const normalisedData = data.map((group: IGroupInterface) => {
-          const normolisedValues = group.tasks.map(task => {
-            return {
-              ...task,
-              value: normolizeTasksValue(task.value, sum)
-            }
-            
-          });
-          return {
-            ...group,
-            tasks: normolisedValues
-          }
-       });
-
-       setMainData(normalisedData);
-      }
-    })
-    .catch(e => console.error(e))
   }, []);
 
   useEffect(() => {
@@ -63,23 +71,25 @@ function App() {
 
    return (
     <div className="wrapper">
-      {mainData.length > 0 ? <div className='widget'>
+      {loading ? <h3>loading...</h3> : null}
+      {mainData.length > 0 && !loading ? <div className='widget'>
         <Header 
           progressValue={progress}
         />
         <main className='mainContent'>
           {
-            mainData.map(group => (
+            mainData.map((group, i) => (
               <Group 
                 name={group.name}
                 tasks={group.tasks}
                 key={group.name}
                 calculateProgress={setProgress}
+                index={i}
               />
             ))
           }                
         </main>
-      </div> : (
+      </div> : error && !loading && (
         <div className='error'>
           <h1>Sorry.</h1>
           <h2>We've faced with an issue.</h2>    

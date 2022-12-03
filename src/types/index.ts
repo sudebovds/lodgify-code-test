@@ -8,5 +8,6 @@ export interface ITaskInterface{
 export interface IGroupInterface{
     name: string;
     tasks: ITaskInterface[];
+    index?: number;
     calculateProgress: React.Dispatch<React.SetStateAction<number>> 
 }
