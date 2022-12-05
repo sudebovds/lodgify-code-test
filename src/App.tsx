@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Group from './components/Group';
 import Header from './components/Header';
-import { GetData } from './api/GetData.js';
+import { GetData } from './api/getData';
 import { TGetDataType } from './types';
 import { getNormolizedData } from './helpers';
 import ErrorComponent from './components/ErrorComponent';
@@ -17,7 +17,7 @@ const App: React.FC = () => {
     const newGorupData = GetData();
 
     newGorupData
-      .then((data) => {
+      .then((data: TGetDataType[]) => {
         if (data.length > 0) {
           const [normalisedData, localProgress] = getNormolizedData(data);
 
