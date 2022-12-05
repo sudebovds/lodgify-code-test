@@ -6,7 +6,7 @@ In the development i used _React_, _Typescript_, _Styled Components_ (actually i
 It was a really interesting experience.\
 You can explore the live version of app here: [https://lodgify-code-test.vercel.app/](https://lodgify-code-test.vercel.app/)\
 Or you can deploy your local version.
-Just clone the main branch and run:\
+Just clone the main branch and run:
 
 ## npm i -> npm run dev
 
