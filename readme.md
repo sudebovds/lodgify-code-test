@@ -8,6 +8,6 @@ You can explore the live version of app here: [https://lodgify-code-test.vercel.
 Or you can deploy your local version.
 Just clone the main branch and run:\
 
-## npm run i -> npm run dev
+## npm i -> npm run dev
 
 for start a dev version
